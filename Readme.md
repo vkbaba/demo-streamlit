@@ -1,6 +1,8 @@
 ## demo-streamlit
 streamlit とFastAPI を使ったデモアプリです。
 
+![app](img/app.png)
+
 ## ローカルでのデプロイ
 ### 1. リポジトリのクローン
 ```bash
@@ -54,6 +56,6 @@ $ git remote set-url origin [新しいリポジトリのURL]
 $ git push -u origin master
 ```
 
-Streamlit Cloud にログインし、GitHubからリポジトリを選択します。注意点として、Advanced Settings でURL fly.io で払い出されたURL に変更します。
+Streamlit Cloud にログインし、GitHubからリポジトリを選択します。注意点として、Advanced Settings で環境変数BASE_URL をfly.io で払い出されたURL に変更します。
 
-![Alt text](image.png)
+![env](img/env.png)
