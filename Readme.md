@@ -6,22 +6,22 @@ streamlit とFastAPI を使ったデモアプリです。
 ## ローカルでのデプロイ
 ### 1. リポジトリのクローン
 ```bash
-$ git clone
-$ cd demo-streamlit
+git clone https://github.com/vkbaba/demo-streamlit.git
+cd demo-streamlit
 ```
 
 ### 2. requirements.txt のインストール
 ```bash
-$ pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 
 ### 3. ローカルでの起動
 ターミナルを2つ開き、それぞれで以下のコマンドを実行します。
 ```bash
-$ uvicorn main:app --reload
+uvicorn main:app --reload
 ```
 ```bash
-$ streamlit run streamlit_app.py
+streamlit run streamlit_app.py
 ```
 
 ### 4. ブラウザでの確認
@@ -35,8 +35,8 @@ http://localhost:8501
 
 ### 1. Fly.io へのFastAPI アプリのデプロイ
 ```bash
-$ fly login
-$ fly launch --no-deploy
+fly login
+fly launch --no-deploy
 ```
 `? Would you like to copy its configuration to the new app? (y/N)`
 はy を選択します。もしEnter でそのまま進めてしまったり、N を選択してしまった場合は、fly.toml の internal_port が8080 に変更になっている可能性があるため、 internal_port = 8000 に戻してください。
@@ -44,7 +44,7 @@ $ fly launch --no-deploy
 その後、アプリをデプロイします。デフォルトで可用性機能が有効になっていると、無料ユーザーでは2台目のVM のデプロイ時にエラーが発生するため、`--ha=false`で無効にします。
 
 ```bash
-$ fly deploy --ha=false
+fly deploy --ha=false
 ```
 
 ### 2. Streamlit Cloud へのデプロイ
@@ -52,8 +52,8 @@ $ fly deploy --ha=false
 
 ```bash
 (リポジトリの作成後)
-$ git remote set-url origin [新しいリポジトリのURL]
-$ git push -u origin master
+git remote set-url origin [新しいリポジトリのURL]
+git push -u origin master
 ```
 
 Streamlit Cloud にログインし、GitHubからリポジトリを選択します。注意点として、Advanced Settings で環境変数BASE_URL をfly.io で払い出されたURL に変更します。
