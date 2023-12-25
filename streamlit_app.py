@@ -4,11 +4,13 @@ import pandas as pd
 
 st.title('FastAPI & Streamlit app')
 
+BASE_URL = st.secrets["BASE_URL"]
+
 name = st.text_input('Item name')
 description = st.text_area('Item description')
 
 def load_data():
-    response = requests.get('http://localhost:8000/items/')
+    response = requests.get(f'{BASE_URL}/items/')
     if response.status_code == 200:
         # 'id'列を最初に配置
         df = pd.DataFrame(response.json())
@@ -23,7 +25,7 @@ def load_data():
 data = load_data()
 
 if st.button('Create'):
-    response = requests.post('http://localhost:8000/items/', json={'name': name, 'description': description})
+    response = requests.post(f'{BASE_URL}/items/', json={'name': name, 'description': description})
     if response.status_code == 200:
         st.success('Item added successfully!')
         data = load_data()

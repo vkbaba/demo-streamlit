@@ -32,3 +32,7 @@ def read_item(item_id: int):  # item_idを整数型として受け取る
 @app.get("/items/")
 def read_items():
     return list(items.values())
+
+@app.get("/hello")
+def hello():
+    return {"message": "Hello World"}
